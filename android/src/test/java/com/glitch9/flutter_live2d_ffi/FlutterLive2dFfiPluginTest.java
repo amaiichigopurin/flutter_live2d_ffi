@@ -1,4 +1,4 @@
-package com.example.flutter_live2d_ffi;
+package com.glitch9.flutter_live2d_ffi;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -15,10 +15,10 @@ import org.junit.Test;
  * you can run them directly from IDEs that support JUnit such as Android Studio.
  */
 
-public class FlutterLive2dFfiPluginTest {
+public class FlutterLive2dFFIPluginTest {
   @Test
   public void onMethodCall_getPlatformVersion_returnsExpectedValue() {
-    FlutterLive2dFfiPlugin plugin = new FlutterLive2dFfiPlugin();
+    FlutterLive2dFFIPlugin plugin = new FlutterLive2dFFIPlugin();
 
     final MethodCall call = new MethodCall("getPlatformVersion", null);
     MethodChannel.Result mockResult = mock(MethodChannel.Result.class);

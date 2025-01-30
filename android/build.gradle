@@ -33,11 +33,27 @@ android {
 
     defaultConfig {
         minSdk = 21
+
+        ndk {
+            abiFilters "arm64-v8a", "x86"  // 필요한 아키텍처만 포함
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs'] // Live2D 라이브러리를 포함
+        }
     }
 
     dependencies {
         testImplementation("junit:junit:4.13.2")
         testImplementation("org.mockito:mockito-core:5.0.0")
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
     }
 
     testOptions {

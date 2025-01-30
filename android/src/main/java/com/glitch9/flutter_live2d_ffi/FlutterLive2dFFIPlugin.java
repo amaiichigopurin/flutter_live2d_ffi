@@ -1,4 +1,4 @@
-package com.example.flutter_live2d_ffi;
+package com.glitch9.flutter_live2d_ffi;
 
 import androidx.annotation.NonNull;
 
@@ -8,8 +8,8 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 
-/** FlutterLive2dFfiPlugin */
-public class FlutterLive2dFfiPlugin implements FlutterPlugin, MethodCallHandler {
+/** FlutterLive2dFFIPlugin */
+public class FlutterLive2dFFIPlugin implements FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -29,6 +29,13 @@ public class FlutterLive2dFfiPlugin implements FlutterPlugin, MethodCallHandler 
     } else {
       result.notImplemented();
     }
+  }
+
+  @Override
+  public void configureFlutterEngine(FlutterEngine flutterEngine) {
+      super.configureFlutterEngine(flutterEngine);
+      PlatformViewRegistry registry = flutterEngine.getPlatformViewsController().getRegistry();
+      registry.registerViewFactory("live2d_view", new Live2DPlatformViewFactory());
   }
 
   @Override
