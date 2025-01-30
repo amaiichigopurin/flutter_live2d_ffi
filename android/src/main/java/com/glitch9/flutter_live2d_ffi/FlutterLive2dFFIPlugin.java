@@ -2,44 +2,19 @@ package com.glitch9.flutter_live2d_ffi;
 
 import androidx.annotation.NonNull;
 
-import io.flutter.embedding.engine.plugins.FlutterPlugin;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.embedding.engine.plugins.FlutterPlugin; 
 
-/** FlutterLive2dFFIPlugin */
-public class FlutterLive2dFFIPlugin implements FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
-  private MethodChannel channel;
-
+/** FlutterLive2DFFIPlugin */
+public class FlutterLive2DFFIPlugin implements FlutterPlugin  {
+ 
   @Override
-  public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutter_live2d_ffi");
-    channel.setMethodCallHandler(this);
-  }
-
-  @Override
-  public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    } else {
-      result.notImplemented();
-    }
-  }
-
-  @Override
-  public void configureFlutterEngine(FlutterEngine flutterEngine) {
-      super.configureFlutterEngine(flutterEngine);
-      PlatformViewRegistry registry = flutterEngine.getPlatformViewsController().getRegistry();
+  public void onAttachedToEngine(FlutterPluginBinding binding) {
+      PlatformViewRegistry registry = binding.getPlatformViewRegistry();
       registry.registerViewFactory("live2d_view", new Live2DPlatformViewFactory());
   }
 
   @Override
-  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    channel.setMethodCallHandler(null);
-  }
+  public void onDetachedFromEngine(FlutterPluginBinding binding) {
+      // 여기에 해제 로직 추가 가능
+  }   
 }

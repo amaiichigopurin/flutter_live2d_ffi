@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
-import 'live2d_bridge.dart';
+
+import 'package:flutter_live2d_ffi/flutter_live2d_ffi.dart';
 
 class Live2DView extends StatefulWidget {
   const Live2DView({super.key});
@@ -14,12 +15,12 @@ class _Live2DViewState extends State<Live2DView> {
   @override
   void initState() {
     super.initState();
-    Live2D.nativeOnStart();
+    FlutterLive2DFFI.nativeOnStart();
   }
 
   @override
   void dispose() {
-    Live2D.nativeOnDestroy();
+    FlutterLive2DFFI.nativeOnDestroy();
     super.dispose();
   }
 
@@ -46,14 +47,14 @@ class _Live2DViewState extends State<Live2DView> {
     return GestureDetector(
       onPanStart: (details) {
         final offset = _convertTouchToLive2D(details.localPosition);
-        Live2D.nativeOnTouchesBegan(offset.dx, offset.dy);
+        FlutterLive2DFFI.nativeOnTouchesBegan(offset.dx, offset.dy);
       },
       onPanUpdate: (details) {
         final offset = _convertTouchToLive2D(details.localPosition);
-        Live2D.nativeOnTouchesMoved(offset.dx, offset.dy);
+        FlutterLive2DFFI.nativeOnTouchesMoved(offset.dx, offset.dy);
       },
       onPanEnd: (details) {
-        Live2D.nativeOnTouchesEnded(0, 0); // 터치 종료 시 좌표 없음
+        FlutterLive2DFFI.nativeOnTouchesEnded(0, 0); // 터치 종료 시 좌표 없음
       },
       child: _resolveWidget(),
     );

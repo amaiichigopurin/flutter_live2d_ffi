@@ -17,6 +17,9 @@
 // #include <Type/csmVector.hpp>
 // #include <Type/csmString.hpp>
 
+#ifndef FLUTTER_BRIDGE_C_H
+#define FLUTTER_BRIDGE_C_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -35,6 +38,8 @@ void nativeOnTouchesMoved(float pointX, float pointY);
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* FLUTTER_BRIDGE_C_H */
 
 /**
 * @brief 기존 Jni Bridge Class

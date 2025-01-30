@@ -15,10 +15,10 @@ import org.junit.Test;
  * you can run them directly from IDEs that support JUnit such as Android Studio.
  */
 
-public class FlutterLive2dFFIPluginTest {
+public class FlutterLive2DFFIPluginTest {
   @Test
   public void onMethodCall_getPlatformVersion_returnsExpectedValue() {
-    FlutterLive2dFFIPlugin plugin = new FlutterLive2dFFIPlugin();
+    FlutterLive2DFFIPlugin plugin = new FlutterLive2DFFIPlugin();
 
     final MethodCall call = new MethodCall("getPlatformVersion", null);
     MethodChannel.Result mockResult = mock(MethodChannel.Result.class);

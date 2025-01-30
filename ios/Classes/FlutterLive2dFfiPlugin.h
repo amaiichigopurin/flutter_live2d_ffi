@@ -1,4 +1,4 @@
 #import <Flutter/Flutter.h>
 
-@interface FlutterLive2dFFIPlugin : NSObject<FlutterPlugin>
+@interface FlutterLive2DFFIPlugin : NSObject<FlutterPlugin>
 @end

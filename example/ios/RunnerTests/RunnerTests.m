@@ -16,7 +16,7 @@
 @implementation RunnerTests
 
 - (void)testExample {
-  FlutterLive2dFFIPlugin *plugin = [[FlutterLive2dFFIPlugin alloc] init];
+  FlutterLive2DFFIPlugin *plugin = [[FlutterLive2DFFIPlugin alloc] init];
 
   FlutterMethodCall *call = [FlutterMethodCall methodCallWithMethodName:@"getPlatformVersion"
                                                               arguments:nil];

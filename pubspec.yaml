@@ -24,8 +24,8 @@ flutter:
     platforms:
       android:
         package: com.glitch9.flutter_live2d_ffi
-        pluginClass: FlutterLive2dFFIPlugin
+        pluginClass: FlutterLive2DFFIPlugin
       ios:
-        pluginClass: FlutterLive2dFFIPlugin
+        pluginClass: FlutterLive2DFFIPlugin
 
  
