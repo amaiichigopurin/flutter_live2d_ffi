@@ -24,6 +24,9 @@
 extern "C" {
 #endif
 
+// 내가 Flutter에서 모델을 로드하기위해 추가한 함수
+void nativeLoadModel(const char* modelPath);
+// 추가 끝
 void nativeOnStart();
 void nativeOnPause();
 void nativeOnStop();

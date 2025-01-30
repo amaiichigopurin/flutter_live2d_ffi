@@ -51,6 +51,11 @@ public:
     */
     LAppModel* GetModel(Csm::csmUint32 no) const;
 
+    // 내가 Flutter에서 모델 로드하기 위해 추가한 코드
+    //void LoadModel(const std::string& modelPath, const std::string& modelJson);
+    void LoadModel(const std::string& modelPath);
+    // 추가 끝
+
     /**
     * @brief   現在のシーンで保持しているすべてのモデルを解放する
     *

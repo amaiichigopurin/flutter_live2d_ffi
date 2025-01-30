@@ -25,6 +25,11 @@
 
 extern "C" {
 
+void nativeLoadModel(const char* modelPath) {
+    std::string path(modelPath);  // 받은 UTF-8 경로를 string으로 변환
+    LAppLive2DManager::GetInstance()->LoadModel(path);
+}
+
 void nativeOnStart() {
     std::cout << "[Live2D] OnStart" << std::endl;
     LAppDelegate::GetInstance()->OnStart();

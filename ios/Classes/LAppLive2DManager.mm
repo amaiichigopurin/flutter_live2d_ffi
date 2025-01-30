@@ -96,6 +96,31 @@ Csm::csmString GetPath(CFURLRef url)
     [self releaseAllModel];
 }
 
+// Flutter에서 모델을 로드하기 위해 내가 추가한 함수
+- (void)loadModel:(NSString*)modelPath
+{
+    if (modelPath == nil) {
+        LAppPal::PrintLogLn("[LAppLive2DManager] loadModel: modelPath is null.");
+        return;
+    }
+
+    // 기존 모델 삭제
+    [self releaseAllModel];
+
+    // NSString → std::string 변환
+    std::string pathStr = std::string([modelPath UTF8String]);
+
+    // model3.json 파일 경로 설정
+    std::string modelJson = pathStr + ".model3.json";
+
+    LAppPal::PrintLogLn("[LAppLive2DManager] Loading model from path: %s", pathStr.c_str());
+
+    // 새로운 모델 로드
+    _models.PushBack(new LAppModel());
+    _models[0]->LoadAssets(pathStr.c_str(), modelJson.c_str());
+}
+// 추가 끝
+
 - (void)releaseAllModel
 {
     for (Csm::csmUint32 i = 0; i < _models.GetSize(); i++)

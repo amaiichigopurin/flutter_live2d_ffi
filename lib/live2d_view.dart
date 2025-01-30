@@ -4,8 +4,24 @@ import 'dart:io';
 
 import 'package:flutter_live2d_ffi/flutter_live2d_ffi.dart';
 
+/* 
+
+pubspec.yaml 리소스 예제
+
+flutter:
+  assets:
+    - assets/live2d/haru/haru.model3.json
+    - assets/live2d/haru/haru.moc3
+    - assets/live2d/haru/textures/texture_00.png
+    - assets/live2d/haru/textures/texture_01.png
+    - assets/live2d/haru/textures/texture_02.png
+    - assets/live2d/haru/motions/motion_idle.motion3.json
+    - assets/live2d/haru/motions/motion_wave.motion3.json
+*/
+
 class Live2DView extends StatefulWidget {
-  const Live2DView({super.key});
+  final String modelPath;
+  const Live2DView(this.modelPath, {super.key});
 
   @override
   State<Live2DView> createState() => _Live2DViewState();
@@ -15,7 +31,22 @@ class _Live2DViewState extends State<Live2DView> {
   @override
   void initState() {
     super.initState();
-    FlutterLive2DFFI.nativeOnStart();
+    _loadModelAndStart();
+  }
+
+  Future<void> _loadModelAndStart() async {
+    try {
+      // 위의 예제라면 "assets/live2d/haru/haru.model3.json"을 로드
+      await FlutterLive2DFFI.loadModel(widget.modelPath);
+    } on PlatformException catch (e) {
+      print('Failed to load model: ${e.message}');
+    }
+
+    try {
+      await FlutterLive2DFFI.nativeOnStart();
+    } on PlatformException catch (e) {
+      print('Failed to start Live2D: ${e.message}');
+    }
   }
 
   @override

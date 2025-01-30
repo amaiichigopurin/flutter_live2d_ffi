@@ -42,6 +42,10 @@
  */
 - (LAppModel*)getModel:(Csm::csmUint32)no;
 
+// Flutter에서 모델을 로드하기 위해 내가 추가한 함수
+- (void)loadModel:(NSString*)modelPath;
+// 추가 끝
+
 /**
  * @breif 現在のシーンで保持している全てのモデルを解放する
  */

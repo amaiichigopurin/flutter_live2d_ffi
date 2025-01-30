@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Live2DView(),
+        body: Live2DView('assets/live2d/haru/haru.model3.json'),
       ),
     );
   }

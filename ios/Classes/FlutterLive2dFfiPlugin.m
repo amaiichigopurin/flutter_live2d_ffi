@@ -57,6 +57,33 @@
         float y = [args[@"y"] floatValue];
         LAppDelegate::GetInstance()->OnTouchEnded(x, y);
         result(nil);
+    } else if ([call.method isEqualToString:@"getAssetPath"]) {
+        NSString* assetPath = call.arguments[@"asset"];
+        NSString* fullPath = [[NSBundle mainBundle] pathForResource:assetPath ofType:nil];
+        result(fullPath);
+    } else if ([call.method isEqualToString:@"loadModel"]) {
+        // NSDictionary *args = call.arguments;
+        // NSString* modelPath = args[@"path"];
+        // LAppDelegate::GetInstance()->LoadModel(modelPath);     
+
+        NSDictionary *args = call.arguments;
+        NSString* modelPath = args[@"path"];
+
+        if (modelPath == nil) {
+            result([FlutterError errorWithCode:@"INVALID_ARGUMENT"
+                                       message:@"Model path is null"
+                                       details:nil]);
+            return;
+        }
+
+        // // NSString -> std::string 변환 (C++ 함수 호출을 위해)
+        // std::string modelPathStr = std::string([modelPath UTF8String]);
+        // LAppDelegate::GetInstance()->LoadModel(modelPathStr);
+        
+        // LAppLive2DManager에서 모델 로드
+        [[LAppLive2DManager getInstance] loadModel:modelPath];
+
+        result(nil);   
     } else {
         result(FlutterMethodNotImplemented);
     }

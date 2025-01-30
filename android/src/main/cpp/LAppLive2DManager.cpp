@@ -75,6 +75,25 @@ LAppLive2DManager::~LAppLive2DManager()
     delete _viewMatrix;
 }
 
+// 내가 Flutter에서 모델 로드하기 위해 추가한 코드 
+// void LAppLive2DManager::LoadModel(const std::string& modelPath, const std::string& modelJson) {
+//     ReleaseAllModel(); // 기존 모델 삭제
+
+//     _models.PushBack(new LAppModel()); // 새 모델 추가
+//     _models[0]->LoadAssets(modelPath.c_str(), modelJson.c_str()); // 모델 로드
+// }
+void LAppLive2DManager::LoadModel(const std::string& modelPath) {
+    ReleaseAllModel(); // 기존 모델 삭제
+
+    // 모델 JSON 파일 경로 자동 생성
+    std::string modelJson = modelPath + "/" + modelPath.substr(modelPath.find_last_of('/') + 1) + ".model3.json";
+
+    // 새로운 모델 로드
+    _models.PushBack(new LAppModel());
+    _models[0]->LoadAssets(modelPath.c_str(), modelJson.c_str());
+}
+// 추가 끝  
+
 void LAppLive2DManager::ReleaseAllModel()
 {
     for (csmUint32 i = 0; i < _models.GetSize(); i++)
