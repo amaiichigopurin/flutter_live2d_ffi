@@ -15,7 +15,7 @@ abstract class Live2D {
     }
   }
 
-  // C++ 네이티브 함수 정의 (Dart → C++)
+  // FFI로 C++ 네이티브 함수 호출
   static final void Function() nativeOnStart = _live2dLib.lookupFunction<Void Function(), void Function()>("nativeOnStart");
 
   static final void Function() nativeOnPause = _live2dLib.lookupFunction<Void Function(), void Function()>("nativeOnPause");

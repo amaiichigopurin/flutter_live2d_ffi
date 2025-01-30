@@ -1,7 +1,7 @@
 target_sources(${APP_NAME}
   PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/JniBridgeC.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/JniBridgeC.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/FlutterBridgeC.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/FlutterBridgeC.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppAllocator.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppAllocator.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/LAppDefine.cpp
